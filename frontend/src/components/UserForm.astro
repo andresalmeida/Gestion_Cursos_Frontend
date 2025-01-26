@@ -1,5 +1,8 @@
 ---
+import BackToHome from '../components/BackToHome.astro';
 ---
+
+<BackToHome />
 
 <form id="userForm" class="space-y-4">
   <!-- Nombre -->
@@ -123,7 +126,7 @@
             window.location.href = '/estudiantes';
           });
         } else {
-          throw new Error('Error al crear el curso');
+          throw new Error('Error al crear el estudiante');
         }
       } catch (error) {
         alert(error instanceof Error ? error.message : 'Ocurrió un error inesperado');

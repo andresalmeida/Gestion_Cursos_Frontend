@@ -106,11 +106,11 @@ export const deleteCurso = async (id: number): Promise<void> => {
 
 
 // Función para matricular un estudiante a un curso
-// export const matricularEstudianteEnCurso = async (cursoId: number, estudiante: Estudiante): Promise<Estudiante> => {
-//   const response = await fetch(`${BASE_URL_CURSOS}/matricular-estudiante/${cursoId}`, {
+// export const matricularEstudianteEnCurso = async (cursoId: number, estudianteId: number): Promise<{ id: number }> => {
+//   const response = await fetch(`${BASE_URL_CURSOS}/${cursoId}/matricular-estudiante`, {
 //     method: "POST",
 //     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(estudiante),
+//     body: JSON.stringify({ estudiante_id: estudianteId }),
 //   });
 //   if (!response.ok) throw new Error("Error al matricular el estudiante al curso");
 //   return await response.json();
@@ -138,8 +138,6 @@ export const desmatricularEstudianteDeCurso = async (cursoId: number, estudiante
   if (!response.ok) throw new Error("Error al desmatricular el estudiante del curso");
   return await response.json();
 };
-
-// Nuevas funciones para
 
 
 // ESTA FUNCION YA NO SE USA PORQUE USABA EL METODO PUT
