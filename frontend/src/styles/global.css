@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+
+/* Personalizaciones adicionales */
+body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Efecto de texto con gradiente */
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Estilos personalizados para enlaces */
+  a {
+    @apply transition-all duration-300;
+  }
+  
+  a:hover {
+    @apply transform scale-105;
+  }
+  
+  /* Estilos para formularios */
+  form {
+    @apply space-y-4;
+  }
+  
+  input,
+  textarea,
+  select {
+    @apply w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+  }
+  
+  input[type="submit"],
+  button[type="submit"] {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all;
+  }
+  
+  /* Estilos para botones */
+  button {
+    @apply px-4 py-2 rounded-lg transition-all duration-300;
+  }
+  
+  button.primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  
+  button.secondary {
+    @apply bg-purple-600 text-white hover:bg-purple-700;
+  }
+  
+  button.danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  
+  /* Estilos para tarjetas */
+  .card {
+    @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  /* Estilos para enlaces de editar/eliminar */
+  .edit-link {
+    @apply text-blue-500 hover:text-blue-700 transition-all;
+  }
+  
+  .delete-link {
+    @apply text-red-500 hover:text-red-700 transition-all;
+  }
+  
+  /* Efectos hover para tarjetas */
+  .card:hover {
+    @apply transform scale-105;
+  }
+  
+  /* Animación para botones */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .pulse {
+    animation: pulse 1.5s infinite;
+  }

@@ -1,0 +1,60 @@
+---
+import { getEstudiantes } from '../services/api';
+
+// Obtener la lista de estudiantes
+const estudiantes = await getEstudiantes();
+---
+
+<ul class="space-y-4">
+  {estudiantes.map((estudiante) => (
+    <li class="p-4 border rounded-lg shadow-sm">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="text-lg font-semibold">{estudiante.nombre} {estudiante.apellido}</h3>
+          <p class="text-gray-600">{estudiante.email}</p>
+          <p class="text-gray-600">Teléfono: {estudiante.telefono}</p>
+        </div>
+        <div class="flex space-x-2">
+          <a href={`/estudiantes/editar/${estudiante.id}`} class="text-blue-500 hover:text-blue-700">
+            Editar
+          </a>
+          <button
+            data-id={estudiante.id}
+            class="text-red-500 hover:text-red-700 delete-button"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
+
+<script is:inline>
+  // Manejar la eliminación de estudiantes
+  document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const estudianteId = button.getAttribute('data-id');
+
+        if (confirm('¿Estás seguro de eliminar este estudiante?')) {
+          try {
+            const response = await fetch(`http://localhost:8002/api/estudiantes/${estudianteId}`, {
+              method: 'DELETE',
+            });
+
+            if (response.ok) {
+              window.location.reload(); // Recargar la página para ver los cambios
+            } else {
+              throw new Error('Error al eliminar el estudiante');
+            }
+          } catch (error) {
+            alert(error instanceof Error ? error.message : 'Ocurrió un error inesperado');
+          }
+        }
+      });
+    });
+  });
+</script>

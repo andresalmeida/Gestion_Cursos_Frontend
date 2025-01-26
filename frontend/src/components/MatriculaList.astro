@@ -1,0 +1,178 @@
+---
+import { getCursos, matricularEstudianteEnCurso, desmatricularEstudianteDeCurso } from '../services/api';
+
+// Obtener la lista de cursos
+const cursos = await getCursos();
+---
+
+<ul class="space-y-4">
+  {cursos.map((curso) => (
+    <li class="p-4 border rounded-lg shadow-sm">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="text-lg font-semibold">{curso.nombre}</h3>
+          <p class="text-gray-600">{curso.descripcion}</p>
+          <p class="text-gray-600">Créditos: {curso.creditos}</p>
+          <!-- Mostrar estudiantes matriculados -->
+          {curso.cursoEstudiantes && curso.cursoEstudiantes.length > 0 && (
+            <div class="mt-2">
+              <h4 class="text-sm font-semibold text-gray-700">Estudiantes matriculados:</h4>
+              <ul class="list-disc list-inside">
+                {curso.cursoEstudiantes.map((estudiante) => (
+                  <li class="text-sm text-gray-600">
+                    Estudiante ID: {estudiante.estudiante_id}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        
+        <div class="flex space-x-2">
+          <button
+            data-curso-id={curso.id}
+            class="text-blue-500 hover:text-blue-700 matricular-button"
+          >
+            Matricular
+          </button>
+          <button
+            data-curso-id={curso.id}
+            class="text-red-500 hover:text-red-700 desmatricular-button"
+          >
+            Desmatricular
+          </button>
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
+
+<!-- Modal de Matriculación -->
+<div id="matricularModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-center">
+    <h3 class="text-lg font-semibold">Selecciona un estudiante para matricular</h3>
+    <ul id="studentList" class="mt-4"></ul>
+    <button
+      id="closeMatricularModal"
+      class="bg-blue-500 text-white p-2 rounded mt-4"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>
+
+<!-- Modal de Desmatriculación -->
+<div id="desmatricularModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-center">
+    <h3 class="text-lg font-semibold">Selecciona un estudiante para desmatricular</h3>
+    <ul id="studentListToRemove" class="mt-4"></ul>
+    <button
+      id="closeDesmatricularModal"
+      class="bg-blue-500 text-white p-2 rounded mt-4"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const matricularButtons = document.querySelectorAll('.matricular-button');
+    const desmatricularButtons = document.querySelectorAll('.desmatricular-button');
+
+    // Mostrar el modal para matricular
+    matricularButtons.forEach(button => {
+      button.addEventListener('click', async (e) => {
+        const cursoId = button.getAttribute('data-curso-id');
+        const estudiantes = await fetch('http://localhost:8002/api/estudiantes').then(res => res.json());
+
+        // Llenar la lista de estudiantes en el modal
+        const studentList = document.getElementById('studentList');
+        studentList.innerHTML = '';
+        estudiantes.forEach((estudiante) => {
+          const li = document.createElement('li');
+          li.classList.add('text-sm', 'text-gray-600');
+          li.innerHTML = `
+            <button class="text-blue-500" data-estudiante-id="${estudiante.id}" data-curso-id="${cursoId}">
+              Matricular Estudiante ID: ${estudiante.id}
+            </button>
+          `;
+          studentList.appendChild(li);
+        });
+
+        // Mostrar el modal
+        document.getElementById('matricularModal').classList.remove('hidden');
+        
+        // Manejar la matriculación
+        document.querySelectorAll('#studentList button').forEach(button => {
+          button.addEventListener('click', async (e) => {
+            const estudianteId = button.getAttribute('data-estudiante-id');
+            const cursoId = button.getAttribute('data-curso-id');
+
+            const estudiante = { id: estudianteId };
+            console.log(estudiante);
+            console.log(cursoId);
+
+            try {
+              await matricularEstudianteEnCurso(cursoId, estudiante);
+              alert('Estudiante matriculado con éxito');
+              document.getElementById('matricularModal').classList.add('hidden');
+            } catch (error) {
+              alert(error.message);
+            }
+          });
+        });
+      });
+    });
+
+    // Mostrar el modal para desmatricular
+    desmatricularButtons.forEach(button => {
+      button.addEventListener('click', async (e) => {
+        const cursoId = button.getAttribute('data-curso-id');
+        const estudiantesMatriculados = await fetch(`http://localhost:8003/api/cursos/${cursoId}/estudiantes`).then(res => res.json());
+
+        // Llenar la lista de estudiantes matriculados en el modal
+        const studentListToRemove = document.getElementById('studentListToRemove');
+        studentListToRemove.innerHTML = '';
+        estudiantesMatriculados.forEach((estudiante) => {
+          const li = document.createElement('li');
+          li.classList.add('text-sm', 'text-gray-600');
+          li.innerHTML = `
+            <button class="text-red-500" data-estudiante-id="${estudiante.estudiante_id}" data-curso-id="${cursoId}">
+              Desmatricular Estudiante ID: ${estudiante.estudiante_id}
+            </button>
+          `;
+          studentListToRemove.appendChild(li);
+        });
+
+        // Mostrar el modal
+        document.getElementById('desmatricularModal').classList.remove('hidden');
+
+        // Manejar la desmatriculación
+        document.querySelectorAll('#studentListToRemove button').forEach(button => {
+          button.addEventListener('click', async (e) => {
+            const estudianteId = button.getAttribute('data-estudiante-id');
+            const cursoId = button.getAttribute('data-curso-id');
+
+            try {
+              await desmatricularEstudianteDeCurso(cursoId, estudianteId);
+              alert('Estudiante desmatriculado con éxito');
+              document.getElementById('desmatricularModal').classList.add('hidden');
+            } catch (error) {
+              alert(error.message);
+            }
+          });
+        });
+      });
+    });
+
+    // Cerrar modales
+    document.getElementById('closeMatricularModal').addEventListener('click', () => {
+      document.getElementById('matricularModal').classList.add('hidden');
+    });
+
+    document.getElementById('closeDesmatricularModal').addEventListener('click', () => {
+      document.getElementById('desmatricularModal').classList.add('hidden');
+    });
+  });
+</script>
