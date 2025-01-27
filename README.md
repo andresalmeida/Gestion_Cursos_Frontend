@@ -1,7 +1,9 @@
-# 🤓☝🏻 Gestión de Estudiantes y Cursos
 ---
+# 🤓☝🏻 Gestión de Estudiantes y Cursos
+
 Este proyecto es una aplicación web para gestionar estudiantes y cursos. Está desarrollada con 🚀 **Astro** como framework de frontend y 🎨 **Tailwind CSS** para los estilos. El backend está construido con  **Spring Boot** y se comunica con el frontend a través de una API REST para que la gestión de matrículas de estudiantes sea rápida, estilosa y funcional.
 
+---
 
 ## 🛠️ Tech Stack que manejamos
 
@@ -171,7 +173,56 @@ Sí, son los que ya explicamos arriba, peeeeero, oye, no está de más explicar 
 ## 🎨 Screenshots
 ¡Así luce en acción! 🔥
 
----
+1. Esta es la pantalla de inicio de la aplicación, una chimba, ¿verdad? Desde aquí podremos navegar a las otras opciones.
+<img width="1280" alt="index" src="https://github.com/user-attachments/assets/336c83f1-5adb-445e-ab66-317dc014a07b" />
+
+2. Esta es la pantalla de estudiantes, aquí veremos la lista de los estudiantes matriculados, y podremos editarlos, o, eliminarlos
+<img width="1440" alt="estudiantes" src="https://github.com/user-attachments/assets/21eee892-d293-4984-90ba-ce566a71379f" />
+
+3. Si decidimos editar un estudiante, se nos abrirá una nueva ventana, ahí deberemos hacer los cambios que deseemos.
+<img width="1440" alt="estu_editar" src="https://github.com/user-attachments/assets/242314f5-c75b-49f7-895d-f4b09eda0273" />
+
+4. Si editamos, nos aparecerá una ventana de confirmación, así sabremos que la persona deja de ser quien era antes, convirtiéndose en una nueva; o solo puso mal su teléfono.
+ <img width="1440" alt="estu_editado" src="https://github.com/user-attachments/assets/6d698c4a-07ec-4ed3-984c-63e9a1a53a1b" />
+
+5. Si decidimos eliminar un estudiante, nos aparecerá una pantalla de confirmación. Es una acción sería, así que, vale la pena preguntar ⚠️.
+<img width="1440" alt="estu_eliminar" src="https://github.com/user-attachments/assets/8a312e0b-bfe9-475e-ab1c-9f9a5aa8edab" />
+
+6. Si estamos seguro de eliminar un estudiante, nos aparecerá la pantalla con la confirmación #SeFueSeFue 😔.
+<img width="1440" alt="estu_eliminado" src="https://github.com/user-attachments/assets/ba56109b-376d-4b4c-8015-b62d689eb639" />
+
+7. Pero cuando una ventana se cierra, una puerta se abre, también tenemos una pantalla para poder crear un estudiante, se ve así.
+<img width="1440" alt="creacion_estu" src="https://github.com/user-attachments/assets/643bccf0-b1fa-4aa2-8ac0-c7c7f0615c39" />
+
+8. Ahí si creamos un estudiante, nos aparecerá la confirmación #BienvenidoAlTeam 🫂.
+<img width="1440" alt="estu_creado" src="https://github.com/user-attachments/assets/142ee34f-1170-4404-9910-e5e99a80d9f2" />
+
+9. Ahora, tenemos la pantalla de cursos, ahí veremos todos los cursos que tenemos disponibles.
+<img width="1440" alt="cursos" src="https://github.com/user-attachments/assets/2f002c02-13f8-43d7-90b6-d3c525534a88" />
+
+10. Si queremos eliminar un curso, de igual manera, aparecerá una ventana de confirmación ⚠️.
+<img width="1440" alt="cur_eliminar" src="https://github.com/user-attachments/assets/46d1782c-4a8c-4390-8271-a697d4fea9a7" />
+
+11. Si siempre sí, eliminamos el curso, tendremos la ventana de confirmación.
+<img width="1440" alt="cur_eliminado" src="https://github.com/user-attachments/assets/24806d23-1aa3-43ac-ba63-3db2b7936ad6" />
+
+12. De igual manera, si queremos crear un curso, tenemos disponible la pantalla en la que debemos llenar los datitos correspondientes.
+<img width="1440" alt="creacion_cur" src="https://github.com/user-attachments/assets/c20a0008-0934-4392-8461-3387722247e9" />
+
+13. Si creamos el curso, pues, recibiremos una ventana de confirmación.
+<img width="1440" alt="cur_creado" src="https://github.com/user-attachments/assets/0974d407-b328-4b53-bc31-72398b3fb145" />
+
+14. Ahora, como ya tenemos cursos, y tenemos estudiantes, podemos ver la pantalla de matricula, aquí tenemos dos partes, la primera, nos mostrará los cursos con los estudiantes matriculados en dicho curso.
+<img width="1440" alt="matricula1" src="https://github.com/user-attachments/assets/bf142e77-51bf-4d8d-bedf-a5b00d6f000e" />
+
+15. La segunda parte, tenemos un formulario, tanto para matricular, como, para desmatricular. Una belleza man!
+<img width="1440" alt="matricula2" src="https://github.com/user-attachments/assets/304728bf-96ef-4567-b814-b5ef73e0ea6b" />
+
+16. Si llenamos el formulario para matricular, recibiremos una ventana de confirmación.
+<img width="1440" alt="matriculado" src="https://github.com/user-attachments/assets/39688d55-f43a-449b-9924-117f1da43a44" />
+
+17. Pero, si llenamos el formulario para desmatricular, pues también, una ventana de confirmación.
+<img width="1440" alt="desmatriculado" src="https://github.com/user-attachments/assets/1bea7cd0-9a6c-416c-8957-72ad1a55f39d" />
 
 ---
 ## 🚧 En construcción
