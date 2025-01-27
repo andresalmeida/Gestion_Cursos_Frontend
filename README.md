@@ -133,7 +133,6 @@ Sí, son los que ya explicamos arriba, peeeeero, oye, no está de más explicar 
 
 ---
 
----
 ## 💻 ¿Cómo lo corres? (En modo local, obvio)
 ¡Facilito, pa'! Sigue estos pasos:
 
@@ -276,6 +275,7 @@ Sí, son los que ya explicamos arriba, peeeeero, oye, no está de más explicar 
 <br>
 
 ---
+
 ## 🚧 En construcción
 Somos los Kubernenes 🐢, y siempre estamos mejorando este frontend, así que siéntete libre de sugerir mejoras o reportar bugs.
 
@@ -300,10 +300,10 @@ Si tienes ideas o quieres colaborar:
 5. Abre un *Pull Request* y charlemos.
 ---
 
----
 ## 🙌 Créditos
 - Desarrollado por los cracks de los Kubernenes 🐢, que saben combinar código, shipost y una buena partida de LoL.
 - Especial shoutout a Astro y Tailwind por hacernos la vida más fácil.
+  
 ---
 
 ¡Gracias por revisar este proyecto! 😊
