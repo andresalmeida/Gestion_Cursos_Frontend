@@ -89,6 +89,7 @@ Este proyecto consume microservicios de estudiantes y cursos. Estas son las joyi
   - Desmatricular estudiantes.
 
 Sí, todo esto lo controlamos desde la magia de `api.ts`. 🌟
+
 ---
 
 ## 🧩 Componentes Principales
