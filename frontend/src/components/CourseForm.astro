@@ -14,6 +14,8 @@ import BackToHome from '../components/BackToHome.astro';
       name="nombre"
       class="p-2 border rounded w-full"
       required
+      pattern="^[ A-Za-záéíóúÁÉÍÓÚñÑ]+$"
+      title="Solo se permiten letras y espacios."
     />
   </div>
 
@@ -26,6 +28,8 @@ import BackToHome from '../components/BackToHome.astro';
       name="descripcion"
       class="p-2 border rounded w-full"
       required
+      pattern="^[ A-Za-záéíóúÁÉÍÓÚñÑ]+$"
+      title="Solo se permiten letras y espacios."
     />
   </div>
 
@@ -38,6 +42,9 @@ import BackToHome from '../components/BackToHome.astro';
       name="creditos"
       class="p-2 border rounded w-full"
       required
+      min="1"
+      max="5"
+      title="Los créditos deben estar entre 1 y 5"
     />
   </div>
 
